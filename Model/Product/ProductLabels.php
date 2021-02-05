@@ -36,8 +36,8 @@ class ProductLabels
         if ($_product->hasData('product_info_icon')) {
 
             // VEGAN
-            if ($_product->getAttributeText('product_info_icon')==='VEGAN') {
-                $product_label .= '<div class="product-label new-label">VEGAN</div>';
+            if ($_product->getAttributeText('product_info_icon')==='TESTING') {
+                $product_label .= '<div class="product-label new-label">TESTING</div>';
             }
         }
 
@@ -52,7 +52,8 @@ class ProductLabels
      */
     public function isNewProduct($_product,$_createdAt=false)
     {
-        $now = new \DateTime(null, new \DateTimeZone('Europe/London'));
+
+        $now = new \DateTime('NOW', new \DateTimeZone('UTC'));
 
         if ($_createdAt) {
             // use created at data for new product calculation
@@ -77,8 +78,8 @@ class ProductLabels
 
         if(!(empty($productNewFromDate))) {
 
-            $newFromDate = new \DateTime($productNewFromDate, new \DateTimeZone('Europe/London'));
-            $newToDate = new \DateTime($productNewToDate, new \DateTimeZone('Europe/London'));
+            $newFromDate = new \DateTime($productNewFromDate, new \DateTimeZone('UTC'));
+            $newToDate = new \DateTime($productNewToDate, new \DateTimeZone('UTC'));
             $productAgeDays=$newFromDate->diff($now);
 
             // show products as new if created in last XX days
@@ -102,7 +103,7 @@ class ProductLabels
         // Init time
         //
         $_productSpecialPrice=false;
-        $_now = new \DateTime(null, new \DateTimeZone('Europe/London'));
+        $_now = new \DateTime('NOW', new \DateTimeZone('UTC'));
 
         // check for special price time range
         //
