@@ -1,0 +1,22 @@
+{
+    "name": "gaiterjones/module-productlabels",
+    "description": "",
+    "type": "magento2-module",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "name": "gaiterjones",
+            "email": "modules@gaiterjones.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Gaiterjones\\ProductLabels\\": ""
+        }
+    }
+}

@@ -1,0 +1,54 @@
+<?php
+/**
+ *  BLOCK Gaiterjones\ProductLabels\Block\ProductInfoIcon
+ */
+$_productInfoIconData=$block->getProductInfoIconData();
+?>
+
+<?php if($_productInfoIconData->productlabel !==false): ?>
+<div class="product info labels" style="padding-bottom: 10px;">
+    <?php echo $_productInfoIconData->productlabel; ?>
+</div>
+<?php endif; ?>
+
+<?php if($_productInfoIconData->infoicon !==false): ?>
+<div class="product info infoicon">
+    <p>
+        <img alt="<?php echo $_productInfoIconData->infoicontext; ?>" style="position:relative; bottom: 5px; float: right; width: 20%;" src="<?php echo $_productInfoIconData->infoicon; ?>"/>
+    </p>
+</div>
+<?php endif; ?>
+
+<?php if(count($_productInfoIconData->childSwatchElements)>0): ?>
+    <style>
+    .swatch-option.specialoffer:after {
+        content: "<?php echo  __('SPECIAL OFFER'); ?>";
+        color: red;
+        font-weight: bold;
+        text-shadow: 1px 1px #C0C0C0;
+    }
+    .swatch-option.newproduct:after {
+        content: "<?php echo  __('NEW'); ?>";
+        color: green;
+        font-weight: bold;
+        text-shadow: 1px 1px #C0C0C0;
+    }
+    </style>
+
+    <?php // on swatch.initialized event add label class to swatch elements ?>
+    <script>
+    require(['jquery'], function($){
+        $(document).on('swatch.initialized', function() {
+            var childSwatchElements = <?php echo json_encode($_productInfoIconData->childSwatchElements); ?>;
+            var childCount = <?php echo $_productInfoIconData->childCount; ?>;
+            $.each(childSwatchElements, function(index, item) {
+                if (item.class==='newproduct' && childCount===childSwatchElements.length){return;}
+                if($('#' + item.id).length)
+                {
+                    $('#' + item.id).addClass(item.class);
+                }
+            });
+        })
+    });
+    </script>
+<?php endif; ?>
