@@ -1,8 +1,8 @@
 <?php
-/**
- *  BLOCK Gaiterjones\ProductLabels\Block\ProductInfoIcon
- */
-$_productInfoIconData=$block->getProductInfoIconData();
+
+/** @var $viewModel \Gaiterjones\ProductLabels\ViewModel\ProductLabels */
+$viewModel = $block->getViewModel();
+$_productInfoIconData=$viewModel->getProductInfoIconData();
 ?>
 
 <?php if($_productInfoIconData->productlabel !==false): ?>

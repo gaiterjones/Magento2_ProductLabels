@@ -2,7 +2,7 @@
 <page layout="2columns-right" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="product.info.main">
-            <block class="Gaiterjones\ProductLabels\Block\ProductInfoIcon" name="product.info.infoicon" template="Gaiterjones_ProductLabels::infoicon.phtml" before="-">
+            <block class="Magento\Framework\View\Element\Template" name="product.info.infoicon" template="Gaiterjones_ProductLabels::infoicon.phtml" before="-">
                 <arguments>
                     <argument name="view_model" xsi:type="object">Gaiterjones\ProductLabels\ViewModel\ProductLabels</argument>
                 </arguments>
